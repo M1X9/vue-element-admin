@@ -14,7 +14,7 @@ import region from '@/view/mechanism/region/index'
 import holiday from '@/view/mechanism/holiday/index'
 import classify from '@/view/product/classify/index'
 import setmealList from '@/view/product/setmealList/index'
-import productLabel from '@/view/product/productLabel/index'
+import productLabel from '@/view/product/productLabel/index'//产品
 import characteristic from '@/view/product/characteristic/index'
 import Intendedfor from '@/view/product/Intendedfor/index'
 import notice from '@/view/product/notice/index'
