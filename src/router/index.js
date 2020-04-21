@@ -1,179 +1,293 @@
-// 导入组件
-import Vue from 'vue';
-import Router from 'vue-router';
-// 登录
-import login from '@/views/login';
-// 首页
-import index from '@/views/index';
-/**
- * 基础菜单
- */
-// 商品管理
-import Goods from '@/views/goods/Goods';
-// 机器信息管理
-import Machine from '@/views/machine/Machine';
-// 货道信息管理
-import MachineAisle from '@/views/machine/MachineAisle';
-/**
- * 订单管理
- */
-// 交易订单
-import Order from '@/views/pay/Order';
-/**
- * 系统管理
- */
-// 用户管理
-import user from '@/views/system/user';
-// 菜单管理
-import Module from '@/views/system/Module';
-// 角色管理
-import Role from '@/views/system/Role';
-// 公司管理
-import Dept from '@/views/system/Dept';
-// 系统环境变量
-import Variable from '@/views/system/Variable';
-// 权限管理
-import Permission from '@/views/system/Permission';
-/**
- * 支付管理
- */
-// 支付配置信息
-import MachineConfig from '@/views/machine/MachineConfig';
-// 支付配置
-import Config from '@/views/pay/Config';
-/**
- * 数据监控
- */
-// 监控查询
-import druidLogin from '@/views/druid/login';
+import Vue from 'vue'
+import Router from 'vue-router'
+import login from '@/view/login/index'
+// import index from '@/view/index/index'
+import layout from '@/layout/index'
+import home from '@/view/home/index'
+import medicalexaminationcenter from '@/view/mechanism/medicalexaminationcenter/index'
+import channel from '@/view/mechanism/channel/index'
+import brand from '@/view/mechanism/brand/index'
+import Label from '@/view/mechanism/Label/index'
+import Other from '@/view/mechanism/Other/index'
+import service from '@/view/mechanism/service/index'
+import region from '@/view/mechanism/region/index'
+import holiday from '@/view/mechanism/holiday/index'
+import classify from '@/view/product/classify/index'
+import setmealList from '@/view/product/setmealList/index'
+import productLabel from '@/view/product/productLabel/index'
+import characteristic from '@/view/product/characteristic/index'
+import Intendedfor from '@/view/product/Intendedfor/index'
+import notice from '@/view/product/notice/index'
+import purchaseGi from '@/view/product/purchaseGi/index'
+import newproject from '@/view/project/newproject/index'
+import projectclassify from '@/view/project/projectclassify/index'
+import projectindex from '@/view/project/projectindex/index'
+import orderlist from '@/view/Order/orderlist/index'
+import orderclassify from '@/view/Order/orderclassify/index'
+Vue.use(Router)
 
-// 图表界面
-import statistics from '@/views/charts/statistics';
 
-// 启用路由
-Vue.use(Router);
-
-// 导出路由 
 export default new Router({
-    routes: [{
-        path: '/',
-        name: '',
-        component: login,
-        hidden: true,
-        meta: {
-            requireAuth: false
-        }
-    }, {
-        path: '/login',
-        name: '登录',
-        component: login,
-        hidden: true,
-        meta: {
-            requireAuth: false
-        }
-    }, {
-        path: '/index',
-        name: '首页',
-        component: index,
-        iconCls: 'el-icon-tickets',
-        children: [{
-            path: '/goods/Goods',
-            name: '商品管理',
-            component: Goods,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/machine/Machine',
-            name: '机器信息管理',
-            component: Machine,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/machine/MachineAisle',
-            name: '货道信息管理',
-            component: MachineAisle,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/pay/Order',
-            name: '交易订单',
-            component: Order,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/user',
-            name: '用户管理',
-            component: user,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/Module',
-            name: '菜单管理',
-            component: Module,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/Role',
-            name: '角色管理',
-            component: Role,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/Dept',
-            name: '公司管理',
-            component: Dept,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/Variable',
-            name: '系统环境变量',
-            component: Variable,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/system/Permission',
-            name: '权限管理',
-            component: Permission,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/machine/MachineConfig',
-            name: '支付配置信息',
-            component: MachineConfig,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/pay/Config',
-            name: '支付配置',
-            component: Config,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/druid/login',
-            name: '监控查询',
-            component: druidLogin,
-            meta: {
-                requireAuth: true
-            }
-        }, {
-            path: '/charts/statistics',
-            name: '数据可视化',
-            component: statistics,
-            meta: {
-                requireAuth: true
-            }
-        }]
-    }]
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+	{
+	  path: '/',
+    name: 'layout',
+    redirect:'/home',
+    component: layout,
+    children:[
+      {
+        path: '/home',
+        name: 'home',
+        component: home
+      },
+    ]
+	},{
+	  path: '/medicalexaminationcenter',
+    name: 'layout',
+    redirect:'/medicalexaminationcenter/index',
+    component: layout,
+    children:[
+      {
+        path: '/medicalexaminationcenter/index',
+        name: 'medicalexaminationcenter',
+        component: medicalexaminationcenter
+      },
+    ]
+	},{
+	  path: '/channel',
+    name: 'layout',
+    redirect:'/channel/index',
+    component: layout,
+    children:[
+      {
+        path: '/channel/index',
+        name: 'channel',
+        component: channel
+      },
+    ]
+  },,{
+	  path: '/brand',
+    name: 'layout',
+    redirect:'/brand/index',
+    component: layout,
+    children:[
+      {
+        path: '/brand/index',
+        name: 'brand',
+        component: brand
+      },
+    ]
+  },
+  {
+	  path: '/Label',
+    name: 'layout',
+    redirect:'/Label/index',
+    component: layout,
+    children:[
+      {
+        path: '/Label/index',
+        name: 'Label',
+        component: Label
+      },
+    ]
+  },
+  {
+	  path: '/service',
+    name: 'layout',
+    redirect:'/service/index',
+    component: layout,
+    children:[
+      {
+        path: '/service/index',
+        name: 'service',
+        component: service
+      },
+    ]
+	},   {
+	  path: '/Other',
+    name: 'layout',
+    redirect:'/Other/index',
+    component: layout,
+    children:[
+      {
+        path: '/Other/index',
+        name: 'Other',
+        component: Other
+      },
+    ]
+	}, {
+	  path: '/region',
+    name: 'layout',
+    redirect:'/region/index',
+    component: layout,
+    children:[
+      {
+        path: '/region/index',
+        name: 'region',
+        component: region
+      },
+    ]
+	},  {
+	  path: '/holiday',
+    name: 'layout',
+    redirect:'/holiday/index',
+    component: layout,
+    children:[
+      {
+        path: '/holiday/index',
+        name: 'holiday',
+        component: holiday
+      },
+    ]
+	}, {
+	  path: '/classify',
+    name: 'layout',
+    redirect:'/classify/index',
+    component: layout,
+    children:[
+      {
+        path: '/classify/index',
+        name: 'classify',
+        component: classify
+      },
+    ]
+	}, {
+	  path: '/setmealList',
+    name: 'layout',
+    redirect:'/setmealList/index',
+    component: layout,
+    children:[
+      {
+        path: '/setmealList/index',
+        name: 'setmealList',
+        component: setmealList
+      },
+    ]
+	},{
+	  path: '/productLabel',
+    name: 'layout',
+    redirect:'/productLabel/index',
+    component: layout,
+    children:[
+      {
+        path: '/productLabel/index',
+        name: 'productLabel',
+        component: productLabel
+      },
+    ]
+	},{
+	  path: '/characteristic',
+    name: 'layout',
+    redirect:'/characteristic/index',
+    component: layout,
+    children:[
+      {
+        path: '/characteristic/index',
+        name: 'characteristic',
+        component: characteristic
+      },
+    ]
+	},{
+	  path: '/Intendedfor',
+    name: 'layout',
+    redirect:'/Intendedfor/index',
+    component: layout,
+    children:[
+      {
+        path: '/Intendedfor/index',
+        name: 'Intendedfor',
+        component: Intendedfor
+      },
+    ]
+	},{
+	  path: '/notice',
+    name: 'layout',
+    redirect:'/notice/index',
+    component: layout,
+    children:[
+      {
+        path: '/notice/index',
+        name: 'notice',
+        component: notice
+      },
+    ]
+	},{
+	  path: '/purchaseGi',
+    name: 'layout',
+    redirect:'/purchaseGi/index',
+    component: layout,
+    children:[
+      {
+        path: '/purchaseGi/index',
+        name: 'purchaseGi',
+        component: purchaseGi
+      },
+    ]
+	},{
+	  path: '/newproject',
+    name: 'layout',
+    redirect:'/newproject/index',
+    component: layout,
+    children:[
+      {
+        path: '/newproject/index',
+        name: 'newproject',
+        component: newproject
+      },
+    ]
+	},{
+	  path: '/projectclassify',
+    name: 'layout',
+    redirect:'/projectclassify/index',
+    component: layout,
+    children:[
+      {
+        path: '/projectclassify/index',
+        name: 'projectclassify',
+        component: projectclassify
+      },
+    ]
+	},{
+	  path: '/projectindex',
+    name: 'layout',
+    redirect:'/projectindex/index',
+    component: layout,
+    children:[
+      {
+        path: '/projectindex/index',
+        name: 'projectindex',
+        component: projectindex
+      },
+    ]
+	},{
+	  path: '/orderlist',
+    name: 'layout',
+    redirect:'/orderlist/index',
+    component: layout,
+    children:[
+      {
+        path: '/orderlist/index',
+        name: 'orderlist',
+        component: orderlist
+      },
+    ]
+	},{
+	  path: '/orderclassify',
+    name: 'layout',
+    redirect:'/orderclassify/index',
+    component: layout,
+    children:[
+      {
+        path: '/orderclassify/index',
+        name: 'orderclassify',
+        component: orderclassify
+      },
+    ]
+	}
+  ]
 })
